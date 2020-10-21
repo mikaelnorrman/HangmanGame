@@ -37,7 +37,6 @@ public class HangmanGame {
 
         // Word found initialization
         wordFound = new char[wordToFind.length()];
-
         for (int i = 0; i < wordFound.length; i++) {
             wordFound[i] = '_';
         }
@@ -90,7 +89,12 @@ public class HangmanGame {
         try (Scanner input = new Scanner(System.in)) {
             // We play while nbErrors is lower than max errors or user has found the word
             while (nbErrors < MAX_ERRORS) {
-                System.out.println("\nEnter a letter : ");
+                System.out.println("Welcome To Hangman!");
+                System.out.println("************************");
+                // Print the lenght of the hidden text
+                System.out.println("\nThe hangman word is " + wordToFind.length() + " letters!");
+                System.out.println("You have " + MAX_ERRORS + " attempt to get it right!");
+                System.out.print("Guess the Word by enter a letter ::->  ");
                 // Get next input from user
                 String str = input.next();
 
@@ -111,7 +115,8 @@ public class HangmanGame {
                     break;
                 } else ;
                 // We display nb tries remaining for the user
-                System.out.println("\n=> NB tries remaining : " + (MAX_ERRORS - nbErrors));
+                System.out.println("\nTries remaining : " + (MAX_ERRORS - nbErrors));
+                drawHangman(MAX_ERRORS);
             }
         }
         if (nbErrors == MAX_ERRORS) {
@@ -122,10 +127,124 @@ public class HangmanGame {
     }
 
 
-    public static void main(String[] args) {
-        System.out.println("Hangman Game");
-        HangmanGame hangmanGame = new HangmanGame();
-        hangmanGame.newGame();
-        hangmanGame.play();
+
+    private static void drawHangman(int MAX_ERRORS) {
+        /**
+         * HangMan graphics from outerspace!
+         * The if statment use the lives counter to generate its outerspace graphics.
+         * @param lives
+         */
+        if (MAX_ERRORS == 10) {
+            System.out.println("|----------");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 9) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 8) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 7) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 6) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|   -|     ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 5) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|   -|-    ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 4) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|   -|-    ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 3) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|  --|--   ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 2) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|  --|--   ");
+            System.out.println("|   /      ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else if (MAX_ERRORS == 1) {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    O     ");
+            System.out.println("|  --|--   ");
+            System.out.println("|   /|     ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        } else {
+            System.out.println("|----------");
+            System.out.println("|    |     ");
+            System.out.println("|    &     ");
+            System.out.println("|    X     ");
+            System.out.println("|  --|--   ");
+            System.out.println("|   /|     ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+            System.out.println("|          ");
+        }
     }
+
 }
